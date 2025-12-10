@@ -1,6 +1,6 @@
 ﻿namespace PTE_Model
 {
-    public class WfdBaseModel
+    public abstract class WfdBaseModel
     {
         public string Content { get; set; } = null!;
     }
@@ -9,6 +9,13 @@
         public int Id { get; set; }
         public int? SeqNo { get; set; }
         public bool? IsTested { get; set; }
-
     }
+    public class CreateWfdModel: WfdBaseModel { }
+    public class UpdateWfdModel : WfdBaseModel { }
+    public class SearchWfdModel
+    {
+        public string? Content { get; set; } 
+        public bool? IsTested { get; set; }
+    }
+
 }

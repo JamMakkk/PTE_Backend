@@ -13,10 +13,25 @@ builder.Services.AddDbContext<PTEContext>(options =>
    options.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString)));
 
 
+
 // Add services to the container.
-builder.Services.AddScoped<WfdService>();
+
+// Configuration
+builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
+
+// PTE Content Service
+builder.Services.AddScoped<IWfdService,WfdService>();
+
+
+
+
+
+
+
+
 
 builder.Services.AddControllers();
+
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen(c =>
