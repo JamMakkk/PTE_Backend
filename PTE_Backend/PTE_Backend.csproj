@@ -26,8 +26,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\AutoMapper\PTE_AutoMapper.csproj" />
+    <ProjectReference Include="..\PTE_AutoMapper\PTE_AutoMapper.csproj" />
     <ProjectReference Include="..\DataContext\DataContext.csproj" />
+    <ProjectReference Include="..\PTE_Model\PTE_Model.csproj" />
     <ProjectReference Include="..\PTE_Repository\PTE_Repository.csproj" />
 	  <PackageReference Include="Microsoft.OpenApi" Version="1.6.14" />
   </ItemGroup>

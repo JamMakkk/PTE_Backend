@@ -1,8 +1,9 @@
+using AutoMapper;
 using DataContext.PTEContext;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
+using PTE_AutoMapper;
 using PTE_Repository;
-using PTE_Model;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -16,8 +17,10 @@ builder.Services.AddDbContext<PTEContext>(options =>
 
 // Add services to the container.
 
-// Configuration
+// AutoConfiguration
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
+
+builder.Services.AddScoped<AutoMapperConfig>();
 
 // PTE Content Service
 builder.Services.AddScoped<IWfdService,WfdService>();
@@ -36,7 +39,7 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen(c =>
 {
-    c.SwaggerDoc("v1", new Microsoft.OpenApi.Models.OpenApiInfo
+    c.SwaggerDoc("v1", new OpenApiInfo
     {
         Title = "PTE API",
         Version = "v1"
