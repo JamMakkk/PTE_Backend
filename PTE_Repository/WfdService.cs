@@ -1,6 +1,4 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using System.Runtime;
-using System.Transactions;
 using DataContext.PTEContext;
 using Microsoft.Extensions.Logging;
 using PTE_Model;
@@ -36,6 +34,55 @@ namespace PTE_Repository
                 _logger.LogError(ex, errMsg);
                 throw new Exception(errMsg);
             }
+        }
+
+        public async Task<WfdModel> CreateWfd(CreateWfdModel create)
+        {
+            try
+            {
+                var service = _mapper.Map<WriteFromDictation>(create);
+
+                service.SeqNo = (await _context.WriteFromDictations.MaxAsync(e => e.SeqNo) ?? 0) + 1;
+
+                await _context.WriteFromDictations.AddAsync(service);
+                await _context.SaveChangesAsync();
+
+                return await GetWfdById(service.Id);
+            }
+            catch (Exception ex)
+            {
+                var errMsg = $"Error occurred while creating Wfd. Error: {ex.Message}";
+                _logger.LogError(ex, errMsg);
+                throw new Exception(errMsg);
+            }
+        }
+        public async Task<WfdModel> UpdateWfd(UpdateWfdModel update)
+        {
+            try
+            {
+                var service = await _context.WriteFromDictations.Where(e => e.Id == update.Id).FirstOrDefaultAsync()
+                    ?? throw new InvalidDataException("Invalid Id");
+                _mapper.Map(update, service);
+
+                _context.WriteFromDictations.Update(service);
+                await _context.SaveChangesAsync();
+
+                return await GetWfdById(service.Id);
+            }
+            catch (Exception ex)
+            {
+                var errMsg = $"Error occurred while updating Wfd. Error: {ex.Message}";
+                _logger.LogError(ex, errMsg);
+                throw new Exception(errMsg);
+            }
+        }
+        public async Task<GeneralResponse<string>> DeleteWfdById(int id)
+        {
+            var service = await _context.WriteFromDictations.Where(e => e.Id == id).ExecuteDeleteAsync();
+            if (service == 0) throw new InvalidDataException("Invalid Id");
+
+            return new() { IsSuccess = true, Response = "Successfully delete" };
+           
 
         }
 

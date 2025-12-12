@@ -11,7 +11,10 @@
         public bool? IsTested { get; set; }
     }
     public class CreateWfdModel: WfdBaseModel { }
-    public class UpdateWfdModel : WfdBaseModel { }
+    public class UpdateWfdModel : WfdBaseModel 
+    {
+        public int Id { get; set; }
+    }
     public class SearchWfdModel
     {
         public string? Content { get; set; } 
