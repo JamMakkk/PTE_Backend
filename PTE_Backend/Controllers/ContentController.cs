@@ -36,7 +36,7 @@ namespace PTE_Backend.Controllers
 
         [SwaggerOperation("Delete WFD")]
         [HttpDelete("WFD/{id}")]
-        public async Task<IActionResult> DeletePatientEmergencyContact(int id)
+        public async Task<IActionResult> DeleteWfd(int id)
             => Ok(await _wfdService.DeleteWfdById(id));
 
         [SwaggerOperation("Get WFDs")]

@@ -78,12 +78,19 @@ namespace PTE_Repository
         }
         public async Task<GeneralResponse<string>> DeleteWfdById(int id)
         {
-            var service = await _context.WriteFromDictations.Where(e => e.Id == id).ExecuteDeleteAsync();
-            if (service == 0) throw new InvalidDataException("Invalid Id");
+            try
+            {
+                var service = await _context.WriteFromDictations.Where(e => e.Id == id).ExecuteDeleteAsync();
+                if (service == 0) throw new InvalidDataException("Invalid Id");
 
-            return new() { IsSuccess = true, Response = "Successfully delete" };
-           
-
+                return new() { IsSuccess = true, Response = "Successfully delete" };
+            }
+            catch (Exception ex)
+            {
+                var errMsg = $"Error occurred while deleting Wfd. Error: {ex.Message}";
+                _logger.LogError(ex, errMsg);
+                throw new Exception(errMsg);
+            }
         }
 
         public async Task<PaginationModel<WfdModel>> GetWfds(int skip, int take, SearchWfdModel search)
