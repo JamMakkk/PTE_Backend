@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PTE_Repository", "PTE_Repos
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PTE_AutoMapper", "PTE_AutoMapper\PTE_AutoMapper.csproj", "{2F699B4F-37F0-A0F0-51C7-85C38925BCC4}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Shared", "Shared\Shared.csproj", "{8A558BAA-EC54-4602-BAF8-0897D1426F14}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{2F699B4F-37F0-A0F0-51C7-85C38925BCC4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2F699B4F-37F0-A0F0-51C7-85C38925BCC4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2F699B4F-37F0-A0F0-51C7-85C38925BCC4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8A558BAA-EC54-4602-BAF8-0897D1426F14}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8A558BAA-EC54-4602-BAF8-0897D1426F14}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8A558BAA-EC54-4602-BAF8-0897D1426F14}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8A558BAA-EC54-4602-BAF8-0897D1426F14}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

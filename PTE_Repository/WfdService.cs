@@ -3,6 +3,8 @@ using DataContext.PTEContext;
 using Microsoft.Extensions.Logging;
 using PTE_Model;
 using AutoMapper;
+using Shared;
+using Microsoft.EntityFrameworkCore.Diagnostics;
 
 namespace PTE_Repository
 {
@@ -118,6 +120,21 @@ namespace PTE_Repository
             catch (Exception ex)
             {
                 var errMsg = $"Error occurred while searching Wfd. Error: {ex.Message}";
+                _logger.LogError(ex, errMsg);
+                throw new Exception(errMsg);
+            }
+        }
+
+        public async Task<bool> UploadFile(Stream file)
+        {
+            try
+            {
+                var path = "../text.jpg";
+                return await FileHandler.SaveUploadedFile(file,path);
+            }
+            catch (Exception ex)
+            {
+                var errMsg = $"Error occurred while uploading file. Error: {ex.Message}";
                 _logger.LogError(ex, errMsg);
                 throw new Exception(errMsg);
             }

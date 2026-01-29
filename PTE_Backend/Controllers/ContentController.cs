@@ -43,5 +43,19 @@ namespace PTE_Backend.Controllers
         [HttpPost("WFD/Search/{skip}/{take}")]
         public async Task<IActionResult> GetWfds(int skip, int take, SearchWfdModel search)
             => Ok(await _wfdService.GetWfds(skip, take, search));
+
+        [SwaggerOperation("Upload file")]
+        [HttpPost("WFD/File")]
+        public async Task<IActionResult> UploadFile([FromForm] IFormFile file)
+        {
+            if (file == null || file.Length == 0)
+                return BadRequest("File is required");
+            await using var stream = file.OpenReadStream();
+
+            var result = await _wfdService.UploadFile(stream);
+
+            return Ok(result);
+        }
+
     }
 }

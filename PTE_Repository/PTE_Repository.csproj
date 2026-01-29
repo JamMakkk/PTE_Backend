@@ -11,6 +11,7 @@
 		<ProjectReference Include="..\DataContext\DataContext.csproj" />
 		<ProjectReference Include="..\PTE_AutoMapper\PTE_AutoMapper.csproj" />
 		<ProjectReference Include="..\PTE_Model\PTE_model.csproj" />
+		<ProjectReference Include="..\Shared\Shared.csproj" />
 
 	</ItemGroup>
 
