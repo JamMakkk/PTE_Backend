@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Swashbuckle.AspNetCore.Annotations;
-using PTE_Repository;
 using PTE_Model;
+using PTE_Repository;
 
 namespace PTE_Backend.Controllers
 {
