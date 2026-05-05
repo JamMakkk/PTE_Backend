@@ -4,7 +4,6 @@ namespace PTE_Model
     public abstract class MemberBaseModel
     {
         public string Username { get; set; } = null!;
-        public string? Password { get; set; }
         public string? Email { get; set; }
         public string? Phone { get; set; }
     }
@@ -21,7 +20,7 @@ namespace PTE_Model
     }
     public class CreateMemberModel : MemberBaseModel
     {
-
+        public string? Password { get; set; }
     }
     public class UpdateMemberModel : MemberBaseModel
     {

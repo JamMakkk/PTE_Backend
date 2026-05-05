@@ -4,7 +4,6 @@ using Microsoft.Extensions.Logging;
 using PTE_Model;
 using AutoMapper;
 using Shared;
-using Microsoft.EntityFrameworkCore.Diagnostics;
 
 namespace PTE_Repository
 {
